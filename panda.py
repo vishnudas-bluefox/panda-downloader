@@ -452,7 +452,7 @@ def main(url):
 		printaudio_res(yt)
 		
 		def resolut():
-			print("[eg:   Enter the resolution:720]\n\nEnter the option: ",end="")
+			print("[eg:   Enter the Quality:160]\n\nEnter the option: ",end="")
 			res=input()
 			return res
 	
