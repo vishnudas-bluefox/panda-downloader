@@ -49,6 +49,11 @@ pkg update && pkg upgrade
 
 pkg install git python -y
 
+
+termux-setup-storage
+
+Allow the storage permission for downloading path
+
 git clone https://github.com/DCHACKZzz/panda-downloader
 
 cd panda-downloader
