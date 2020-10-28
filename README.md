@@ -43,6 +43,11 @@ pip install typing_extensions
 
 python3 panda.py
 
+
+
+Download path linux: Desktop
+
+
 for termux
 ----------
 pkg update && pkg upgrade
@@ -64,6 +69,9 @@ pip install typing_extensions
 
 python panda.py
 
+
+Download path of termux: Download/panda-downloader/
+
 for windows
 -
 
@@ -83,7 +91,7 @@ python3 -m pip install typing_extensions
 
 python3 panda.py
 
-
+Download path of windows: desktop/panda-downloader
 
 
 wakeup the panda and enjoy the style 
