@@ -72,7 +72,21 @@ python3 -m pip install typing_extensions
 python3 panda.py
 
 
+
+
 wakeup the panda and enjoy the style 
+
+
+![](final.gif)
+
+
+your donations are important for our future projects
+
+
+donate:
+
+upid: das95678@oksbi
+
 
 feel free to contribute..:)
 
