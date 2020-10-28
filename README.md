@@ -18,6 +18,10 @@ feel the real power...
 
 
 
+![](panda-loading.gif)
+
+
+
 Download like pro! don't use stupid websites and applications any more!
 
 for linux
