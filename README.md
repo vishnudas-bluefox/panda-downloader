@@ -38,6 +38,9 @@ git clone https://github.com/DCHACKZzz/panda-downloader
 
 cd panda-downloader
 
+pip install typing_extensions
+
+
 python3 panda.py
 
 for termux
@@ -49,6 +52,10 @@ pkg install git python -y
 git clone https://github.com/DCHACKZzz/panda-downloader
 
 cd panda-downloader
+
+pip install typing_extensions
+
+
 
 python panda.py
 
