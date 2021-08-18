@@ -1,10 +1,11 @@
 # panda-downloader
 
+
 created by: DCHACKZzz
 
 youtube:https://youtu.be/gQeYpdXPdE8
 
-instagram: @vishnu___das___
+instagram: @charvaakan
 
 feel the real power...
 
@@ -30,15 +31,13 @@ apt-get upgrade && apt-get update
 
 apt-get install git
 
-apt-get install python
-
 apt-get install python3
 
 git clone https://github.com/DCHACKZzz/panda-downloader
 
 cd panda-downloader
 
-pip install typing_extensions
+pip install -r requirements.txt
 
 
 python3 panda.py
