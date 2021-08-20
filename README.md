@@ -35,8 +35,9 @@ feel the real power...
 
 Download like pro! don't use stupid websites and applications any more!
 
-for linux
--
+## for linux
+
+```python
 apt-get upgrade && apt-get update
 
 apt-get install git
@@ -52,13 +53,15 @@ pip install -r requirements.txt
 
 python3 panda.py
 
-
+```
 
 Download path linux: Desktop
 
 
-for termux
-----------
+## for termux
+## ----------
+
+```
 pkg update && pkg upgrade
 
 pkg install git python -y
@@ -77,7 +80,7 @@ pip install typing_extensions
 
 
 python panda.py
-
+```
 
 Download path of termux: Download/panda-downloader/
 
@@ -91,7 +94,7 @@ https://git-scm.com/download/win
 https://www.python.org/downloads/windows/
 
 open cmd  then
-
+```
 git clone https://github.com/DCHACKZzz/panda-downloader
 
 cd panda-downloader
@@ -99,7 +102,7 @@ cd panda-downloader
 python3 -m pip install typing_extensions
 
 python3 panda.py
-
+```
 Download path of windows: desktop/panda-downloader
 
 
@@ -119,11 +122,21 @@ your donations are important for our future projects
 
 donate:
 
-upid: das95678@oksbi
+
+if you like what i do, maybe consider buying me a coffee/tea 🥺👉👈
+
+<a href="https://buymeacoffee.com/vishnudas" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" width="150" ></a>
 
 
-feel free to contribute..:)
+ 
+<a href="https://www.instagram.com/charvaakan/">
+  <img align="left" alt="Vishnudas LinkedIN" width="22px" src="https://camo.githubusercontent.com/c9dacf0f25a1489fdbc6c0d2b41cda58b77fa210a13a886d6f99e027adfbd358/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f696e7374616772616d2e737667" />
+</a>
 
-
-
-
+<a href="https://twitter.com/vishnudasbluef1">
+  <img align="left" alt="Vishnudas | Twitter" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg" />
+</a>
+<a href="https://www.linkedin.com/in/vishnudas-python-developer/">
+  <img align="left" alt="Vishnudas LinkedIN" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/linkedin.svg" />
+ </a>
+<br>
