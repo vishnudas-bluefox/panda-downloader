@@ -369,7 +369,7 @@ def convert_audio(out_file):
 
 
 #download audio for linux
-def download_audio_linux(yt,system_name,res_video):
+def download_audio_linux(yt,res_video):
 	path= os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Audio') 
 	try:
 			out_file=yt.streams.filter(only_audio=True, abr=res_video, subtype='mp4').first().download(path)
@@ -383,7 +383,7 @@ def download_audio_linux(yt,system_name,res_video):
 
 #download for windows
 
-def download_audio_windows(yt,system_name,res_video):
+def download_audio_windows(yt,res_video):
 	path= os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 	try:
 			out_file=yt.streams.filter(only_audio=True, abr=res_video, subtype='mp4').first().download(path)
@@ -529,12 +529,9 @@ def main(url):
 		print(color.cyan+"1.Linux		2.Windows	3.Termux	4.Same directory\033[0m")
 		machine=input(color.white+"Enter the option:")
 		if machine=="1":
-			
-			system_name=input("\n [eg Enter  the machines name:DCHACKZzz]\n\nEnter the machines name:")
-			download_audio_linux(yt,system_name,res_video)
+			download_audio_linux(yt,res_video)
 		elif machine=="2":
-			system_name=input("\n [eg Enter  the machines name:DCHACKZzz]\n\nEnter the machines name:")
-			download_audio_windows(yt,system_name,res_video)
+			download_audio_windows(yt,res_video)
 		elif machine=="3":
 			download_audio_termux(yt,res_video)
 		elif machine=="4":
