@@ -1,4 +1,5 @@
 from pytube import YouTube
+from pytube import Playlist	
 from pytube.cli import on_progress
 import os
 import time
@@ -140,8 +141,58 @@ def printoli(path):
 		input("Hit Enter to continue....")
 
 
+# download instance for playlist
 
+def playlist():
+	count =0
+	url =input("Enter the url: ")
+	p=Playlist(url)
+	print("Downloading playlist: ",p.title)
+	print("\n\n++++++++++++++++++++++++++++\nThe videos or Audio gonna download is:...\n++++++++++++++++++++++++++++\n")
+	def names():
+		for video in p.videos:
+			print( video.title)
+			count=+1
+
+
+	names()
+	print(color.green +"\n\nWe gonna download  " , count ," number of videos" +"\033[0m",end="")
+
+	option = input("Hit enter to continue || Press *  for main menu")
+	if option == "*":
+		startmain()
+	else:
+		print("Downloading starts ..")
+
+		# downloading starts
+		for video in p.videos:
+			i=1
+			resolution_yt = video.streams.filter(progressive=True)
+			for stream in resolution_yt:
+				data = stream.resolution
+			#print(resolution_yt)
+				print(str(i)+". "+data)
+				int(i)
+				i+=1
+			break # fro stoping print the all resolutions 
+
+
+		resolution_for_download = input("Hit Enter for Download in (360)\nEnter the option (ex:360p) : ")
+		
+		#download
+		for down in p.videos:
+			down.register_on_progress_callback(progressFunction)
+			down.streams.filter(progressive=True,res=resolution_for_download).first().download("/home/vishnudas/Desktop/panda-downloader/Videos",)
+			
+			#download_linux(stream,"null",resolution_for_download)
+
+			
+
+		
+
+	
 #print video resolutions
+
 def printvideo_res(yt):
 	print("Available resolutions..")
 	print("______________________")
@@ -151,7 +202,8 @@ def printvideo_res(yt):
 
 #print audio resolutions
 
-
+def printvideo_reso():
+	pass
 def printaudio_res(yt):
 	print("Available Qualities...")
 	print("____________________")
@@ -171,44 +223,42 @@ def convert_video(out_file):
 #video downlaod section
 
 #download for linux
-def download_linux(yt,system_name,res_video):
+def download_linux(yt,res_video):
+	desktop = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Videos') 
 	try:
 		
 		try:
-			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="mp4").first().download("/home/"+system_name+"/Desktop/panda-downloader/Videos")
-			path="/home/"+system_name+"/Desktop/panda-downloader/Videos"
+			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="mp4").first().download(desktop)
 			convert_video(out_file)
 			print("Panda downloaded you file...\n")
 			done()
 			option=input("Hit Enter for countinue../\npress('*') to display the downloaded path")
 			if option=="*":
-				print("\n \n",path,"\n\n")
+				print("\n \n",desktop,"\n\n")
 				input("Hit Enter to continue....")
 		except:
-				out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="webm").first().download("/home/"+system_name+"/Desktop/panda-downloader/Videos")
-				path="/home/"+system_name+"/Desktop/panda-downloader/Videos"
+				out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="webm").first().download(desktop)
 				convert_video(out_file)
 				print("Panda downloaded you file...\n")
 				done()
 				option=input("Hit Enter for countinue../\npress('*') to display the downloaded path")
 				if option=="*":
-					print("\n \n",path,"\n\n")
+					print("\n \n",desktop,"\n\n")
 					input("Hit Enter to continue....")
 	except:
-			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="3gpp").first().download("/home/"+system_name+"/Desktop/panda-downloader/Videos")
-			path="/home/"+system_name+"/Desktop/panda-downloader/Videos"
+			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="3gpp").first().download(desktop)
 			convert_video(out_file)
 			print("Panda downloaded you file...\n")
 			done()
 			option=input("Hit Enter for countinue../\npress('*') to display the downloaded path")
 			if option=="*":
-				print("\n \n",path,"\n\n")
+				print("\n \n",desktop,"\n\n")
 				input("Hit Enter to continue....")
 	
 		
 #downlaod video for windows
-def download_windows(yt,system_name,res_video):
-	path="C:/Users/"+system_name+"/Desktop/panda-downloader/Videos"
+def download_windows(yt,res_video):
+	path= os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop/panda-downloader/Videos')
 	try:
 		
 		try:
@@ -320,7 +370,7 @@ def convert_audio(out_file):
 
 #download audio for linux
 def download_audio_linux(yt,system_name,res_video):
-	path="/home/"+system_name+"/Desktop/panda-downloader/Videos"
+	path= os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Audio') 
 	try:
 			out_file=yt.streams.filter(only_audio=True, abr=res_video, subtype='mp4').first().download(path)
 			convert_audio(out_file)
@@ -334,7 +384,7 @@ def download_audio_linux(yt,system_name,res_video):
 #download for windows
 
 def download_audio_windows(yt,system_name,res_video):
-	path="C:/Users/"+system_name+"/Desktop/panda-downloader/Videos"
+	path= os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 	try:
 			out_file=yt.streams.filter(only_audio=True, abr=res_video, subtype='mp4').first().download(path)
 			convert_audio(out_file)
@@ -356,6 +406,7 @@ def download_audio_termux(yt,res_video):
 			out_file=yt.streams.filter(only_audio=True, abr=res_video, subtype='webm').first().download(path)
 			convert_audio(out_file)
 			printoli(path)
+
 
 
 #download for current
@@ -385,8 +436,13 @@ def runagain():
 		
 
 def startmain():
-	url=input("[eg:Enter the url:https://youtu.be/gQeYpdXPdE8\n\nEnter the url:")
-	main(url)
+	option = input("1.Playlist \nElse Hit Enter....")
+
+	if option =="1" :
+		playlist()
+	else:
+		url=input("Enter the url: ")
+		main(url)
 
 
 def main(url):
@@ -431,12 +487,9 @@ def main(url):
 		print(color.cyan+"1.Linux		2.Windows	3.Termux	4.Same directory\033[0m")
 		machine=input(color.white+"Enter the option:")
 		if machine=="1":
-			
-			system_name=input("\n [eg Enter  the machines name:DCHACKZzz]\n\nEnter the machines name:")
-			download_linux(yt,system_name,res_video)
+			download_linux(yt,res_video)
 		elif machine=="2":
-			system_name=input("\n [eg Enter  the machines name:DCHACKZzz]\n\nEnter the machines name:")
-			download_windows(yt,system_name,res_video)
+			download_windows(yt,res_video)
 		elif machine=="3":
 			download_termux(yt,res_video)
 		elif machine=="4":
@@ -494,5 +547,3 @@ def main(url):
 			print(color.red+"*****Unexpected input try again()*****\033[0m"+color.white)
 			main(url)
 startmain()
-
-
