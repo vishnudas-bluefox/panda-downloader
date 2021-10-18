@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from pytube import YouTube
 from pytube import Playlist	
 from pytube.cli import on_progress
@@ -17,6 +19,7 @@ class backcolor:
 
 panda ="[DCHACKZzz-Panda-downloader-Github-]"
 os.system('clear')
+
 
 youtube_name='''
 
@@ -144,18 +147,22 @@ def printoli(path):
 # download instance for playlist
 
 def playlist():
-	count =0
-	url =input("Enter the url: ")
-	p=Playlist(url)
+	desktop = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Videos')
+	try:
+		url =input("Enter the url: ")
+		p=Playlist(url)
+	except:
+		print(color.red+"An Error occured please try again..",end="")
+		playlist()
 	print("Downloading playlist: ",p.title)
-	print("\n\n++++++++++++++++++++++++++++\nThe videos or Audio gonna download is:...\n++++++++++++++++++++++++++++\n")
+	print(color.green+"\n\n++++++++++++++++++++++++++++\033[0m\nThe videos or Audio gonna download is:...\n"+color.green+"++++++++++++++++++++++++++++\n \033[0m")
 	def names():
+		count =0
 		for video in p.videos:
-			print( video.title)
-			count=+1
-
-
-	names()
+			print(color.cyan+ video.title +"\033[0m")
+			count = count+1
+		return count
+	count =names()
 	print(color.green +"\n\nWe gonna download  " , count ," number of videos" +"\033[0m",end="")
 
 	option = input("Hit enter to continue || Press *  for main menu")
@@ -175,17 +182,26 @@ def playlist():
 				int(i)
 				i+=1
 			break # fro stoping print the all resolutions 
-
-
-		resolution_for_download = input("Hit Enter for Download in (360)\nEnter the option (ex:360p) : ")
 		
-		#download
-		for down in p.videos:
-			down.register_on_progress_callback(progressFunction)
-			down.streams.filter(progressive=True,res=resolution_for_download).first().download("/home/vishnudas/Desktop/panda-downloader/Videos",)
+		def download():
+			resolution_for_download = input("\nEnter the option (ex:360p) : ")
+			resolution_for_download = str(resolution_for_download)+"p"
 			
-			#download_linux(stream,"null",resolution_for_download)
-
+			#download
+			
+			for down in p.videos:
+				
+				print(down.title)
+				down.register_on_progress_callback(on_progress)
+				Rename = down.streams.filter(progressive=True,res=resolution_for_download).first().download(desktop)
+				convert_video(Rename)
+				print("\n")
+		try:
+			download()
+		except:
+			print(color.red + "An Error Occured in Downloading"+"\033[0m",end="")
+			download()
+			startmain()
 			
 
 		
@@ -436,7 +452,7 @@ def runagain():
 		
 
 def startmain():
-	option = input("1.Playlist \nElse Hit Enter....")
+	option = input("1.Playlist [Note:Linux Only] \nElse Hit Enter....\nEnter the Option: ")
 
 	if option =="1" :
 		playlist()
