@@ -53,7 +53,6 @@ spin.spin(1)
 panda_image='''
 
 
-
     ____  ____ _____  ____/ /___ _      ____/ /___ _      ______  / /___  ____/ /__  _____
    / __ \/ __ `/ __ \/ __  / __ `/_____/ __  / __ \ | /| / / __ \/ / __ \/ __  / _ \/ ___/
   / /_/ / /_/ / / / / /_/ / /_/ /_____/ /_/ / /_/ / |/ |/ / / / / / /_/ / /_/ /  __/ /    
@@ -198,7 +197,7 @@ def playlist():
 		startmain()
 	else:
 		print("Collecting ...")
-
+		
 		# downloading starts
 		for video in p.videos:
 			i=1
@@ -206,7 +205,7 @@ def playlist():
 			for stream in resolution_yt:
 				data = stream.resolution
 			#print(resolution_yt)
-				print(str(i)+". "+data)
+				print(color.cyan+data+color.end)
 				int(i)
 				i+=1
 			break # fro stoping print the all resolutions 
