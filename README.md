@@ -39,25 +39,29 @@ Download like pro! don't use stupid websites and applications any more!
 
 ```python
 apt-get upgrade && apt-get update
-
+```
+```python
 apt-get install git
-
+```
+```python
 apt-get install python3
-
+```
+```python
 git clone https://github.com/DCHACKZzz/panda-downloader
-
+```
+```python
 cd panda-downloader
-
+```
+```python
 pip install -r requirements.txt
-
-
+```
+```python
 python3 panda.py
-
 ```
 
+
+
 Download path linux: Desktop
-
-
 ## for termux
 ## ----------
 
