@@ -1,4 +1,7 @@
+#!/usr/bin/env python3
+
 from pytube import YouTube
+from pytube import Playlist	
 from pytube.cli import on_progress
 import os
 import time
@@ -11,11 +14,13 @@ class color:
 	green='\033[32m'
 	red='\033[31m'
 	cyan='\033[36m'
+	end = "\033[0m"
 class backcolor:
 	cyan='\033[0m 1;36;40m'
 
-panda ="[DCHACKZzz-Panda-downloader-Github-]"
+panda ="[Vishnudas-bluefox-Panda-downloader-Github-]"
 os.system('clear')
+
 
 youtube_name='''
 
@@ -44,9 +49,8 @@ for i in youtube_name:
 print("\033[0;31;47m"+youtube_logo+" \033[0m")
 input(color.white+"Hit Enter to continue.....")
 print("Panda is wakeing up...",end="")
-spin.spin(3)
-panda_logo='''
-
+spin.spin(1)
+panda_image='''
 
 
     ____  ____ _____  ____/ /___ _      ____/ /___ _      ______  / /___  ____/ /__  _____
@@ -75,14 +79,14 @@ panda_logo='''
        :  $$$$$$$$$$P^"       "^T$$$$$$$$$$  :          ..:::::::::........:::
         : T$$$$$$$P"     _._     "T$$$$$$$P :          		
         : '$$$$$P       $$$$$       T$$$$$' :          		
-        :  "$$$P        "T$P"        T$$$"  :          	Credit:DCHACKZzz(github)
+        :  "$$$P        "T$P"        T$$$"  :          	Credit:Vishnudas-Bluefox(github)
          :   T$           :           $P   :           	Panda-Downloader
          :                :                :           	for
           :    "      _..' '.._      "    :            	powerfull Youtube-downloading
            :   '.                   .'   :             
-            '-.                       .-'              
-               '-. '-._  __   _.-' .-'                 
-                  '--.._ ___ _..--'                    
+            '-.                       .-'              	Github		: https://github.com/vishnudas-bluefox
+               '-. '-._  __   _.-' .-'                 	Linked IN 	: https://www.linkedin.com/in/vishnudas-python-developer/
+                  '--.._ ___ _..--'                    	Personal	: http://gitcub.co/
            ....eee$P"   """""    "T$aaa..._             
       _.ee$$$$$P""                  ""T$$$$$aa.
    .gd$$$$$$$P"                        "T$$$$$$bp.     
@@ -90,13 +94,11 @@ panda_logo='''
                                                        
 
 '''
-for i in panda_logo:
-	print(color.white+i,end="")
-	time.sleep(.0005)
-#for i in panda_logo:
-#	print(color.white+i,end="")
-	
-
+def panda_logo():
+	for i in panda_image:
+		print(color.white+i,end="")
+		time.sleep(.0005)
+panda_logo()
 
 laster='''
 
@@ -120,6 +122,30 @@ donist='''
 █▄▀ █▄█ █░▀█ ██▄
 '''
 
+Video_mode = '''
+
+ _    ___     __         
+| |  / (_)___/ /__  ____ 
+| | / / / __  / _ \/ __ |
+| |/ / / /_/ /  __/ /_/ /
+|___/_/\__,_/\___/\____/ 
+                                                   
+
+'''
+
+Playlist_mode = '''
+    ____  __                  __    _      __ 
+   / __ \/ ____ ___  __      / /   (______/ /_
+  / /_/ / / __ `/ / / ______/ /   / / ___/ __/
+ / ____/ / /_/ / /_/ /_____/ /___/ (__  / /_  
+/_/   /_/\__,_/\__, /     /_____/_/____/\__/  
+              /____/                          
+
+'''
+
+
+
+
 def done():
 	for i in donist:
 		print(i,end="")
@@ -140,8 +166,106 @@ def printoli(path):
 		input("Hit Enter to continue....")
 
 
+# download instance for playlist
 
+def playlist():
+
+	for i in Playlist_mode:
+		print(color.green+i +"\033[0m",end="")
+		time.sleep(.0005)
+	
+	
+	try:
+		url =input("Enter the url: ")
+		p=Playlist(url)
+	except:
+		print(color.red+"An Error occured please try again..",end="")
+		playlist()
+	print("Downloading playlist: ",p.title)
+	print(color.green+"\n\n++++++++++++++++++++++++++++\033[0m\nListing the videos:...\n"+color.green+"++++++++++++++++++++++++++++\n \033[0m")
+	def names():
+		count =0
+		for video in p.videos:
+			print(color.cyan+ video.title +"\033[0m\n")
+			count = count+1
+		return count
+	count =names()
+	print(color.green +"\n\nWe gonna download these" , count ," videos" +"\033[0m\n")
+
+	option = input("Hit enter to continue || Press *  for main menu")
+	if option == "*":
+		startmain()
+	else:
+		print("Collecting ...")
+		
+		# downloading starts
+		for video in p.videos:
+			i=1
+			resolution_yt = video.streams.filter(progressive=True)
+			for stream in resolution_yt:
+				data = stream.resolution
+			#print(resolution_yt)
+				print(color.cyan+data+color.end)
+				int(i)
+				i+=1
+			break # fro stoping print the all resolutions 
+		
+		def download():
+			resolution_for_download = input("\nEnter the option (ex:360p) : ")
+			
+			if "p" in resolution_for_download:
+				pass
+			elif "p"  not in resolution_for_download:
+				resolution_for_download = str(resolution_for_download)+"p"
+			
+			
+			System_name = input("Select the machine\n"+color.cyan+"1.Linux 2.Windows 3.termux 4.Current\033[0m \n Enter the option: ")
+			#download
+			def dowwnload_option(location):
+					
+				for down in p.videos:
+					
+					print(down.title)
+					down.register_on_progress_callback(on_progress)
+					Rename = down.streams.filter(progressive=True,res=resolution_for_download).first().download(location)
+					convert_video(Rename)
+					print("\n")
+
+			if System_name == "1":
+				desktop_linux = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Videos/Playlist')
+				dowwnload_option(desktop_linux)
+				printoli(desktop_linux)
+				runagain()
+			elif System_name == "2":
+				desktop_windows = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop/panda-downloader/Videos/Playlist')
+				dowwnload_option(desktop_windows)
+				printoli(desktop_windows)
+				runagain()
+			elif System_name == "3":
+				Termux = "/storage/emulated/0/Download/panda-downloader/videos/Playlist"
+				dowwnload_option(Termux)
+				printoli(Termux)
+				runagain()
+			elif System_name == "4":
+				path="In this metod Panda download your file in current directory"
+				dowwnload_option("")
+				printoli(path)
+				runagain()
+
+
+		try:
+			download()
+		except:
+			print(color.red + "An Error Occured in Downloading"+"\033[0m",end="")
+			download()
+			startmain()
+			
+
+		
+
+	
 #print video resolutions
+
 def printvideo_res(yt):
 	print("Available resolutions..")
 	print("______________________")
@@ -151,7 +275,8 @@ def printvideo_res(yt):
 
 #print audio resolutions
 
-
+def printvideo_reso():
+	pass
 def printaudio_res(yt):
 	print("Available Qualities...")
 	print("____________________")
@@ -171,44 +296,42 @@ def convert_video(out_file):
 #video downlaod section
 
 #download for linux
-def download_linux(yt,system_name,res_video):
+def download_linux(yt,res_video):
+	desktop = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Videos') 
 	try:
 		
 		try:
-			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="mp4").first().download("/home/vishnudas/Desktop/panda-downloader/Videos")
-			path="/home/vishnudas/Desktop/panda-downloader/Videos"
+			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="mp4").first().download(desktop)
 			convert_video(out_file)
 			print("Panda downloaded you file...\n")
 			done()
 			option=input("Hit Enter for countinue../\npress('*') to display the downloaded path")
 			if option=="*":
-				print("\n \n",path,"\n\n")
+				print("\n \n",desktop,"\n\n")
 				input("Hit Enter to continue....")
 		except:
-				out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="webm").first().download("/home/vishnudas/Desktop/panda-downloader/Videos")
-				path="/home/vishnudas/Desktop/panda-downloader/Videos"
+				out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="webm").first().download(desktop)
 				convert_video(out_file)
 				print("Panda downloaded you file...\n")
 				done()
 				option=input("Hit Enter for countinue../\npress('*') to display the downloaded path")
 				if option=="*":
-					print("\n \n",path,"\n\n")
+					print("\n \n",desktop,"\n\n")
 					input("Hit Enter to continue....")
 	except:
-			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="3gpp").first().download("/home/vishnudas/Desktop/panda-downloader/Videos")
-			path="/home/vishnudas/Desktop/panda-downloader/Videos"
+			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="3gpp").first().download(desktop)
 			convert_video(out_file)
 			print("Panda downloaded you file...\n")
 			done()
 			option=input("Hit Enter for countinue../\npress('*') to display the downloaded path")
 			if option=="*":
-				print("\n \n",path,"\n\n")
+				print("\n \n",desktop,"\n\n")
 				input("Hit Enter to continue....")
 	
 		
 #downlaod video for windows
-def download_windows(yt,system_name,res_video):
-	path="C:/Users/"+system_name+"/Desktop/panda-downloader/Videos"
+def download_windows(yt,res_video):
+	path= os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop/panda-downloader/Videos')
 	try:
 		
 		try:
@@ -319,8 +442,8 @@ def convert_audio(out_file):
 
 
 #download audio for linux
-def download_audio_linux(yt,system_name,res_video):
-	path="/home/vishnudas/Desktop/panda-downloader/Videos"
+def download_audio_linux(yt,res_video):
+	path= os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Audio') 
 	try:
 			out_file=yt.streams.filter(only_audio=True, abr=res_video, subtype='mp4').first().download(path)
 			convert_audio(out_file)
@@ -333,8 +456,8 @@ def download_audio_linux(yt,system_name,res_video):
 
 #download for windows
 
-def download_audio_windows(yt,system_name,res_video):
-	path="C:/Users/"+system_name+"/Desktop/panda-downloader/Videos"
+def download_audio_windows(yt,res_video):
+	path= os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop/panda-downloader/Audio')
 	try:
 			out_file=yt.streams.filter(only_audio=True, abr=res_video, subtype='mp4').first().download(path)
 			convert_audio(out_file)
@@ -386,8 +509,21 @@ def runagain():
 		
 
 def startmain():
-	url=input("[eg:Enter the url:https://youtu.be/gQeYpdXPdE8\n\nEnter the url:")
-	main(url)
+	option = input("1.Playlist 2.Video \n[Note: Playlist->Beta Version]\nEnter the Option: ")
+
+	if option =="1" :
+		playlist()
+	elif option == "2":
+		for i in Video_mode:
+			print(color.green+i +"\033[0m",end="")
+			time.sleep(.0005)
+		url=input("Enter the url: ")
+		main(url)
+	else:
+		print(color.red +"An Error occured ,Please try again :)"+color.end)
+		os.system('clear')
+		panda_logo()
+		startmain()
 
 
 def main(url):
@@ -397,9 +533,7 @@ def main(url):
 	except:
 		print("pinging...")
 		main(url)
-	print("Panda is getting up...",end="")
-	spin.spin(3)
-	print("Name:",yt.title)
+	print("Name:",color.cyan+yt.title+color.end)
 	print("Select the for format you want download\n____________________________________\n\n")
 	print(color.cyan+"1.Video	 2.Audio\n")
 	option=input(color.white+"Enter the option: ")
@@ -432,12 +566,9 @@ def main(url):
 		print(color.cyan+"1.Linux		2.Windows	3.Termux	4.Same directory\033[0m")
 		machine=input(color.white+"Enter the option:")
 		if machine=="1":
-			
-			system_name=input("\n [eg Enter  the machines name:DCHACKZzz]\n\nEnter the machines name:")
-			download_linux(yt,system_name,res_video)
+			download_linux(yt,res_video)
 		elif machine=="2":
-			system_name=input("\n [eg Enter  the machines name:DCHACKZzz]\n\nEnter the machines name:")
-			download_windows(yt,system_name,res_video)
+			download_windows(yt,res_video)
 		elif machine=="3":
 			download_termux(yt,res_video)
 		elif machine=="4":
@@ -477,12 +608,9 @@ def main(url):
 		print(color.cyan+"1.Linux		2.Windows	3.Termux	4.Same directory\033[0m")
 		machine=input(color.white+"Enter the option:")
 		if machine=="1":
-			
-			system_name=input("\n [eg Enter  the machines name:DCHACKZzz]\n\nEnter the machines name:")
-			download_audio_linux(yt,system_name,res_video)
+			download_audio_linux(yt,res_video)
 		elif machine=="2":
-			system_name=input("\n [eg Enter  the machines name:DCHACKZzz]\n\nEnter the machines name:")
-			download_audio_windows(yt,system_name,res_video)
+			download_audio_windows(yt,res_video)
 		elif machine=="3":
 			download_audio_termux(yt,res_video)
 		elif machine=="4":
@@ -495,5 +623,3 @@ def main(url):
 			print(color.red+"*****Unexpected input try again()*****\033[0m"+color.white)
 			main(url)
 startmain()
-
-
