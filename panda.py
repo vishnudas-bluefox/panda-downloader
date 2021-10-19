@@ -175,8 +175,8 @@ def download_linux(yt,system_name,res_video):
 	try:
 		
 		try:
-			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="mp4").first().download("/home/"+system_name+"/Desktop/panda-downloader/Videos")
-			path="/home/"+system_name+"/Desktop/panda-downloader/Videos"
+			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="mp4").first().download("/home/vishnudas/Desktop/panda-downloader/Videos")
+			path="/home/vishnudas/Desktop/panda-downloader/Videos"
 			convert_video(out_file)
 			print("Panda downloaded you file...\n")
 			done()
@@ -185,8 +185,8 @@ def download_linux(yt,system_name,res_video):
 				print("\n \n",path,"\n\n")
 				input("Hit Enter to continue....")
 		except:
-				out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="webm").first().download("/home/"+system_name+"/Desktop/panda-downloader/Videos")
-				path="/home/"+system_name+"/Desktop/panda-downloader/Videos"
+				out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="webm").first().download("/home/vishnudas/Desktop/panda-downloader/Videos")
+				path="/home/vishnudas/Desktop/panda-downloader/Videos"
 				convert_video(out_file)
 				print("Panda downloaded you file...\n")
 				done()
@@ -195,8 +195,8 @@ def download_linux(yt,system_name,res_video):
 					print("\n \n",path,"\n\n")
 					input("Hit Enter to continue....")
 	except:
-			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="3gpp").first().download("/home/"+system_name+"/Desktop/panda-downloader/Videos")
-			path="/home/"+system_name+"/Desktop/panda-downloader/Videos"
+			out_file=yt.streams.filter(progressive=True, resolution=res_video, subtype="3gpp").first().download("/home/vishnudas/Desktop/panda-downloader/Videos")
+			path="/home/vishnudas/Desktop/panda-downloader/Videos"
 			convert_video(out_file)
 			print("Panda downloaded you file...\n")
 			done()
@@ -320,7 +320,7 @@ def convert_audio(out_file):
 
 #download audio for linux
 def download_audio_linux(yt,system_name,res_video):
-	path="/home/"+system_name+"/Desktop/panda-downloader/Videos"
+	path="/home/vishnudas/Desktop/panda-downloader/Videos"
 	try:
 			out_file=yt.streams.filter(only_audio=True, abr=res_video, subtype='mp4').first().download(path)
 			convert_audio(out_file)
@@ -356,6 +356,7 @@ def download_audio_termux(yt,res_video):
 			out_file=yt.streams.filter(only_audio=True, abr=res_video, subtype='webm').first().download(path)
 			convert_audio(out_file)
 			printoli(path)
+
 
 
 #download for current
