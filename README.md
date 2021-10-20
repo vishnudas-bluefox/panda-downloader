@@ -71,22 +71,24 @@ Download path linux: Desktop
 
 ```
 pkg update && pkg upgrade
-
+```
+```
 pkg install git python -y
-
-
+```
+```
 termux-setup-storage
-
+```
 Allow the storage permission for downloading path
-
+```
 git clone https://github.com/DCHACKZzz/panda-downloader
-
+```
+```
 cd panda-downloader
-
+```
+```
 pip install typing_extensions
-
-
-
+```
+```
 python panda.py
 ```
 
@@ -102,13 +104,17 @@ https://git-scm.com/download/win
 https://www.python.org/downloads/windows/
 
 open cmd  then
+
 ```
 git clone https://github.com/DCHACKZzz/panda-downloader
-
+```
+```
 cd panda-downloader
-
+```
+```
 python3 -m pip install typing_extensions
-
+```
+```
 python3 panda.py
 ```
 Download path of windows: desktop/panda-downloader
