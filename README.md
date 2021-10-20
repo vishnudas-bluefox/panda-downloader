@@ -31,11 +31,15 @@ feel the real power...
 
 ![](panda-loading.gif)
 
+## Download playlist in one cick
 
+![](playlist1.gif) 
+### Download all videos
+![](playlist2.gif)
 
 Download like pro! don't use stupid websites and applications any more!
 
-## for linux
+### for linux
 
 ```python
 apt-get upgrade && apt-get update
