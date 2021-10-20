@@ -60,7 +60,7 @@ cd panda-downloader
 pip install -r requirements.txt
 ```
 ```python
-python3 panda.py
+./panda.py
 ```
 
 
@@ -89,7 +89,7 @@ cd panda-downloader
 pip install typing_extensions
 ```
 ```
-python panda.py
+./panda.py
 ```
 
 Download path of termux: Download/panda-downloader/
@@ -115,7 +115,7 @@ cd panda-downloader
 python3 -m pip install typing_extensions
 ```
 ```
-python3 panda.py
+./panda.py
 ```
 Download path of windows: desktop/panda-downloader
 
