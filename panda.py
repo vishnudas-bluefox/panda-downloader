@@ -198,19 +198,39 @@ def playlist():
 	else:
 		print("Collecting ...")
 		
-		# downloading starts
-		for video in p.videos:
-			i=1
-			resolution_yt = video.streams.filter(progressive=True)
-			for stream in resolution_yt:
-				data = stream.resolution
-			#print(resolution_yt)
-				print(color.cyan+data+color.end)
-				int(i)
-				i+=1
-			break # fro stoping print the all resolutions 
+
+		vid_aud = input(color.green + "\n1.Video 2.Audio \n Enter the option: "+color.end)
+		if vid_aud == "1":
 		
-		def download():
+			# downloading starts
+			for video in p.videos:
+				i=1
+				resolution_yt = video.streams.filter(progressive=True)
+				for stream in resolution_yt:
+					data = stream.resolution
+				#print(resolution_yt)
+					print(color.cyan+data+color.end)
+					int(i)
+					i+=1
+				break # fro stoping print the all resolutions 
+		elif vid_aud == "2":
+			# downloading starts
+			for video in p.videos:
+				i=1
+				resolution_yt = video.streams.filter(only_audio=True).order_by('abr').desc()
+				for stream in resolution_yt:
+					data = stream.abr
+				#print(resolution_yt)
+					print(color.cyan+data+color.end)
+					int(i)
+					i+=1
+				break # fro stoping print the all resolutions 
+		else:
+			print(color.red+"An Error Occured....."+color.red,end="")
+			spin.spin(2)
+			playlist()
+		
+		def download_videos():
 			resolution_for_download = input("\nEnter the option (ex:360p) : ")
 			
 			if "p" in resolution_for_download:
@@ -253,11 +273,66 @@ def playlist():
 				runagain()
 
 
+		def download_audios():
+			resolution_for_download = input("\nEnter the option (ex:160kbps) : ")
+			
+			if "kbps" in resolution_for_download:
+				pass
+			elif "p"  not in resolution_for_download:
+				resolution_for_download = str(resolution_for_download)+"kbps"
+			
+			
+			System_name = input("Select the machine\n"+color.cyan+"1.Linux 2.Windows 3.termux 4.Current\033[0m \n Enter the option: ")
+			#download
+			def dowwnload_option(location):
+					
+				for down in p.videos:
+					try:	
+						print(down.title)
+						down.register_on_progress_callback(on_progress)
+						Rename = down.streams.filter(only_audio=True,abr=resolution_for_download,subtype='mp4').first().download(location)
+						convert_audio(Rename)
+						print("\n")
+
+					except:
+						print(down.title)
+						down.register_on_progress_callback(on_progress)
+						Rename = down.streams.filter(only_audio=True,abr=resolution_for_download, subtype='webm').first().download(location)
+						convert_audio(Rename)
+						print("\n")
+
+
+			if System_name == "1":
+				desktop_linux = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Audio/Audio_Playlist')
+				dowwnload_option(desktop_linux)
+				printoli(desktop_linux)
+				runagain()
+			elif System_name == "2":
+				desktop_windows = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop/panda-downloader/Audio/Audio_Playlist')
+				dowwnload_option(desktop_windows)
+				printoli(desktop_windows)
+				runagain()
+			elif System_name == "3":
+				Termux = "/storage/emulated/0/Download/panda-downloader/Audio/Audio_Playlist"
+				dowwnload_option(Termux)
+				printoli(Termux)
+				runagain()
+			elif System_name == "4":
+				path="In this metod Panda download your file in current directory"
+				dowwnload_option("")
+				printoli(path)
+				runagain()
+
+
 		try:
-			download()
+			if vid_aud == "1":
+				download_videos()
+			elif vid_aud == "2":
+				download_audios()
+
 		except:
 			print(color.red + "An Error Occured in Downloading"+"\033[0m",end="")
-			download()
+			download_videos()
 			startmain()
 			
 
