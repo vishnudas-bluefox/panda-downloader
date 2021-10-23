@@ -189,7 +189,13 @@ def playlist():
 			print(color.cyan+ video.title +"\033[0m\n")
 			count = count+1
 		return count
-	count =names()
+	ListOrNot = input("Hit Enter to list all the videos.....\n Press 1 skip the listing\n Enter the option")
+	if ListOrNot == "1":
+		count =0
+		for video in p.videos:
+			count = count+1 
+	else: 
+		count =names()
 	print(color.green +"\n\nWe gonna download these" , count ," videos" +"\033[0m\n")
 
 	option = input("Hit enter to continue || Press *  for main menu")
@@ -244,12 +250,15 @@ def playlist():
 			def dowwnload_option(location):
 					
 				for down in p.videos:
-					
-					print(down.title)
-					down.register_on_progress_callback(on_progress)
-					Rename = down.streams.filter(progressive=True,res=resolution_for_download).first().download(location)
-					convert_video(Rename)
-					print("\n")
+					try:
+						print(down.title)
+						down.register_on_progress_callback(on_progress)
+						Rename = down.streams.filter(progressive=True,res=resolution_for_download).first().download(location)
+						convert_video(Rename)
+						print("\n")
+					except:
+						print(color.red+"Not Downlded" +color.end)
+						pass
 
 			if System_name == "1":
 				desktop_linux = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Videos/Playlist/'+p.title)
@@ -287,20 +296,24 @@ def playlist():
 			def dowwnload_option(location):
 					
 				for down in p.videos:
-					try:	
-						
-						down.register_on_progress_callback(on_progress)
-						Rename = down.streams.filter(only_audio=True,abr=resolution_for_download,subtype='mp4').first().download(location)
-						print(down.title)
-						convert_audio(Rename)
-						print("\n")
+					try:
+						try:	
+							
+							down.register_on_progress_callback(on_progress)
+							Rename = down.streams.filter(only_audio=True,abr=resolution_for_download,subtype='mp4').first().download(location)
+							print(down.title)
+							convert_audio(Rename)
+							print("\n")
 
+						except:
+							print(down.title)
+							down.register_on_progress_callback(on_progress)
+							Rename = down.streams.filter(only_audio=True,abr=resolution_for_download, subtype='webm').first().download(location)
+							convert_audio(Rename)
+							print("\n")
 					except:
-						print(down.title)
-						down.register_on_progress_callback(on_progress)
-						Rename = down.streams.filter(only_audio=True,abr=resolution_for_download, subtype='webm').first().download(location)
-						convert_audio(Rename)
-						print("\n")
+						print(color.red+"Not Downlded" +color.end)
+						pass
 
 
 			if System_name == "1":
@@ -333,7 +346,7 @@ def playlist():
 
 		except:
 			print(color.red + "An Error Occured in Downloading"+"\033[0m",end="")
-			download_videos()
+			playlist()
 			startmain()
 			
 
