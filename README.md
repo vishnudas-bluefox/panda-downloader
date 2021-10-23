@@ -31,55 +31,65 @@ feel the real power...
 
 ![](panda-loading.gif)
 
+## Download playlist in one cick
 
+![](playlist1.gif) 
+### Download all videos
+![](playlist2.gif)
 
 Download like pro! don't use stupid websites and applications any more!
 
-## for linux
+### for linux
 
 ```python
 apt-get upgrade && apt-get update
-
+```
+```python
 apt-get install git
-
+```
+```python
 apt-get install python3
-
+```
+```python
 git clone https://github.com/DCHACKZzz/panda-downloader
-
+```
+```python
 cd panda-downloader
-
+```
+```python
 pip install -r requirements.txt
-
-
-python3 panda.py
-
+```
+```python
+./panda.py
 ```
 
+
+
 Download path linux: Desktop
-
-
 ## for termux
 ## ----------
 
 ```
 pkg update && pkg upgrade
-
+```
+```
 pkg install git python -y
-
-
+```
+```
 termux-setup-storage
-
+```
 Allow the storage permission for downloading path
-
+```
 git clone https://github.com/DCHACKZzz/panda-downloader
-
+```
+```
 cd panda-downloader
-
+```
+```
 pip install typing_extensions
-
-
-
-python panda.py
+```
+```
+./panda.py
 ```
 
 Download path of termux: Download/panda-downloader/
@@ -94,14 +104,18 @@ https://git-scm.com/download/win
 https://www.python.org/downloads/windows/
 
 open cmd  then
+
 ```
 git clone https://github.com/DCHACKZzz/panda-downloader
-
+```
+```
 cd panda-downloader
-
+```
+```
 python3 -m pip install typing_extensions
-
-python3 panda.py
+```
+```
+./panda.py
 ```
 Download path of windows: desktop/panda-downloader
 
