@@ -252,17 +252,17 @@ def playlist():
 					print("\n")
 
 			if System_name == "1":
-				desktop_linux = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Videos/Playlist')
+				desktop_linux = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Videos/Playlist/'+p.title)
 				dowwnload_option(desktop_linux)
 				printoli(desktop_linux)
 				runagain()
 			elif System_name == "2":
-				desktop_windows = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop/panda-downloader/Videos/Playlist')
+				desktop_windows = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop/panda-downloader/Videos/Playlist/'+p.title)
 				dowwnload_option(desktop_windows)
 				printoli(desktop_windows)
 				runagain()
 			elif System_name == "3":
-				Termux = "/storage/emulated/0/Download/panda-downloader/videos/Playlist"
+				Termux = "/storage/emulated/0/Download/panda-downloader/videos/Playlist/"+p.title
 				dowwnload_option(Termux)
 				printoli(Termux)
 				runagain()
@@ -288,9 +288,10 @@ def playlist():
 					
 				for down in p.videos:
 					try:	
-						print(down.title)
+						
 						down.register_on_progress_callback(on_progress)
 						Rename = down.streams.filter(only_audio=True,abr=resolution_for_download,subtype='mp4').first().download(location)
+						print(down.title)
 						convert_audio(Rename)
 						print("\n")
 
@@ -303,17 +304,17 @@ def playlist():
 
 
 			if System_name == "1":
-				desktop_linux = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Audio/Audio_Playlist')
+				desktop_linux = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop/panda-downloader/Audio/Audio_Playlist/'+p.title)
 				dowwnload_option(desktop_linux)
 				printoli(desktop_linux)
 				runagain()
 			elif System_name == "2":
-				desktop_windows = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop/panda-downloader/Audio/Audio_Playlist')
+				desktop_windows = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop/panda-downloader/Audio/Audio_Playlist/'+p.title)
 				dowwnload_option(desktop_windows)
 				printoli(desktop_windows)
 				runagain()
 			elif System_name == "3":
-				Termux = "/storage/emulated/0/Download/panda-downloader/Audio/Audio_Playlist"
+				Termux = "/storage/emulated/0/Download/panda-downloader/Audio/Audio_Playlist/"+p.title
 				dowwnload_option(Termux)
 				printoli(Termux)
 				runagain()
