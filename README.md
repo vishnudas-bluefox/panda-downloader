@@ -89,6 +89,9 @@ cd panda-downloader
 pip install typing_extensions
 ```
 ```
+pip install -r requirements.txt
+```
+```
 ./panda.py
 ```
 
@@ -113,6 +116,9 @@ cd panda-downloader
 ```
 ```
 python3 -m pip install typing_extensions
+```
+```
+pip install -r requirements.txt
 ```
 ```
 ./panda.py
