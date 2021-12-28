@@ -1,2 +1,2 @@
 typing_extensions <=3.10.0.0
-pytube <= 11.0.1
+pytube <= 11.0.2
