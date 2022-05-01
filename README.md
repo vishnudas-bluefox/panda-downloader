@@ -135,7 +135,7 @@ wakeup the panda and enjoy the style
 
 ![Portfolio](https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139)
 
-Portfolio: http://gitcub.co/?i=1
+Portfolio: http://vishnudasbluefox.co/?i=1
 
 your donations are important for our future projects
 
