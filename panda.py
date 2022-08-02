@@ -235,7 +235,13 @@ def playlist():
 			print(color.red+"An Error Occured....."+color.red,end="")
 			spin.spin(2)
 			playlist()
-		
+		def download_video_for_playlist(down,resolution_for_download,location):
+			try:
+				video = down.streams.filter(progressive=True,res=resolution_for_download).first().download(location)
+				return video
+			except:
+				print(color.red+"An Error Occured.....Trying once more:)"+color.red,end="")
+				download_video_for_playlist(down,resolution_for_download,location)
 		def download_videos():
 			resolution_for_download = input("\nEnter the option (ex:360p) : ")
 			
@@ -253,7 +259,8 @@ def playlist():
 					try:
 						print(down.title)
 						down.register_on_progress_callback(on_progress)
-						Rename = down.streams.filter(progressive=True,res=resolution_for_download).first().download(location)
+						Rename = download_video_for_playlist(down,resolution_for_download,location)
+						#down.streams.filter(progressive=True,res=resolution_for_download).first().download(location)
 						convert_video(Rename)
 						print("\n")
 					except:
