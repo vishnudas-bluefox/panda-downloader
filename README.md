@@ -1,162 +1,58 @@
-# panda-downloader
+# Panda Downloader
 
+Interactive YouTube video and playlist downloader for Linux, macOS, Windows, and Termux.
 
-created by: Vishnudas-bluefox
+Created by [Vishnudas-bluefox](https://github.com/vishnudas-bluefox)
 
-![Python](https://forthebadge.com/images/badges/made-with-python.svg)                   ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+## Features
 
+- Single video and playlist downloads
+- Video or audio (MP3) with quality selection
+- Interactive save location: default folder, current directory, or custom path
+- Cross-platform defaults (Desktop, Downloads, Termux storage)
 
+## Requirements
 
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)  ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)  ![Windows 10](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) (recommended)
+- [ffmpeg](https://ffmpeg.org/) (required for audio/MP3 conversion)
 
-youtube:https://youtu.be/gQeYpdXPdE8
+## Setup
 
-instagram: https://www.instagram.com/charvaakan/
-
-![forthebadge](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)    ![YouTube](https://img.shields.io/badge/Vishnudas-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)
-
-
-
-feel the real power...
-
-*completly free and secure youtube downloading
- 
-
-*no compromise in privacy
-
-
-*high speed downloading
-
-
-
-![](panda-loading.gif)
-
-## Download playlist in one cick
-
-![](playlist1.gif) 
-### Download all videos
-![](playlist2.gif)
-
-Download like pro! don't use stupid websites and applications any more!
-
-### for linux
-
-```python
-apt-get upgrade && apt-get update
-```
-```python
-apt-get install git
-```
-```python
-apt-get install python3
-```
-```python
-git clone https://github.com/DCHACKZzz/panda-downloader
-```
-```python
+```bash
+git clone https://github.com/vishnudas-bluefox/panda-downloader.git
 cd panda-downloader
-```
-```python
-pip install -r requirements.txt
-```
-```python
-./panda.py
+uv sync
 ```
 
+## Run
 
-
-Download path linux: Desktop
-## for termux
-## ----------
-
-```
-pkg update && pkg upgrade
-```
-```
-pkg install git python -y
-```
-```
-termux-setup-storage
-```
-Allow the storage permission for downloading path
-```
-git clone https://github.com/DCHACKZzz/panda-downloader
-```
-```
-cd panda-downloader
-```
-```
-pip install typing_extensions
-```
-```
-pip install -r requirements.txt
-```
-```
-./panda.py
+```bash
+uv run panda
 ```
 
-Download path of termux: Download/panda-downloader/
+Other entry points:
 
-for windows
--
-
-before going to open cmd download git and python and install 
-
-https://git-scm.com/download/win
-
-https://www.python.org/downloads/windows/
-
-open cmd  then
-
+```bash
+uv run python panda.py
+uv run python -m panda_downloader
 ```
-git clone https://github.com/DCHACKZzz/panda-downloader
-```
-```
-cd panda-downloader
-```
-```
-python3 -m pip install typing_extensions
-```
-```
-pip install -r requirements.txt
-```
-```
-./panda.py
-```
-Download path of windows: desktop/panda-downloader
 
+The CLI walks you through URL, format, quality, and output path, then asks for confirmation before downloading.
 
-wakeup the panda and enjoy the style 
+## Project docs
 
+| File | Purpose |
+| ---- | ------- |
+| [CHANGELOG.md](CHANGELOG.md) | Version history |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Development and PR guidelines |
+| [LICENSE](LICENSE) | MIT license |
+| [SECURITY.md](SECURITY.md) | Vulnerability reporting |
 
-![](final.gif)
+## Notes
 
+- Uses **yt-dlp** (pytube is no longer reliable against current YouTube).
+- Default save path: `~/Desktop/panda-downloader` (macOS/Linux), Windows Desktop, or Termux Download folder.
 
+## License
 
-![Portfolio](https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139)
-
-Portfolio: http://vishnudasbluefox.co/?i=1
-
-your donations are important for our future projects
-
-
-donate:
-
-
-if you like what i do, maybe consider buying me a coffee/tea 🥺👉👈
-
-<a href="https://buymeacoffee.com/vishnudas" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" width="150" ></a>
-
-
- 
-<a href="https://www.instagram.com/charvaakan/">
-  <img align="left" alt="Vishnudas LinkedIN" width="22px" src="https://camo.githubusercontent.com/c9dacf0f25a1489fdbc6c0d2b41cda58b77fa210a13a886d6f99e027adfbd358/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f696e7374616772616d2e737667" />
-</a>
-
-<a href="https://twitter.com/vishnudasbluef1">
-  <img align="left" alt="Vishnudas | Twitter" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg" />
-</a>
-<a href="https://www.linkedin.com/in/vishnudas-python-developer/">
-  <img align="left" alt="Vishnudas LinkedIN" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/linkedin.svg" />
- </a>
-<br>
+MIT — see [LICENSE](LICENSE).
